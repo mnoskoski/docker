@@ -1,0 +1,7 @@
+---
+  - hosts: local
+    tasks:
+      - name: "Install httpd"
+        yum: name=httpd state=installed
+      - name: "Httpd Running"
+        service: name=httpd state=started enabled=yes
