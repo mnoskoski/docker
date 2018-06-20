@@ -1,0 +1,8 @@
+#Docker file to create image centos with https
+
+# Steps to criation:
+#  - Using centos image
+#  - install httpd
+#  - expose in port 80
+#  - configure permission
+#  - enable the start of httpd automatic
