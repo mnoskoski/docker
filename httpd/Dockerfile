@@ -1,11 +1,9 @@
-# using image centos
-FROM c7-local
-
-
-#install httpd
-RUN yum install httpd -y; yum clean all; systemctl enable httpd
-
-#uping the app in port 80
+#using image centos
+FROM centos
+#install apache
+RUN yum update -y && yum install httpd -y && yum clean all
+RUN systemctl enable httpd
+# set the httpd to running in foregorund
+ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+#expose the port 80 of my container
 EXPOSE 80
-
-CMD ["/usr/sbin/init"]
