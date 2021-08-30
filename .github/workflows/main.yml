@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  checkout-vars:
+  - checkout-vars:
 
     runs-on: ubuntu-latest
 
@@ -17,7 +17,7 @@ jobs:
       run: echo 'Hello World'
 
 
-  build:
+  - build:
 
     runs-on: ubuntu-latest
 
@@ -27,3 +27,12 @@ jobs:
       run: ls -lah
     - name: Build the Docker image
       run: docker build . --file httpd/Dockerfile --tag http:$(date +%s)
+  
+  - create-package-helm:
+    run-on: ubuntu-latest
+    steps:
+    - name: Helm Package
+      # You may pin to the exact commit or the version.
+      # uses: Flydiverny/helm-package-action@38c209238e15e179e4bcfbc6caac15e9a4156f05
+      uses: Flydiverny/helm-package-action@0.1.0
+    
