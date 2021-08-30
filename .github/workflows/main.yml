@@ -14,5 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: list files on directory
+      run: ls -lah
     - name: Build the Docker image
       run: docker build . --file ../../httpd/Dockerfile --tag http:$(date +%s)
