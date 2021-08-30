@@ -8,6 +8,15 @@ on:
 
 jobs:
 
+  checkout-vars:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Hello World
+      run: echo 'Hello World'
+
+
   build:
 
     runs-on: ubuntu-latest
@@ -17,4 +26,4 @@ jobs:
     - name: list files on directory
       run: ls -lah
     - name: Build the Docker image
-      run: docker build . --file ../../httpd/Dockerfile --tag http:$(date +%s)
+      run: docker build . --file httpd/Dockerfile --tag http:$(date +%s)
