@@ -26,7 +26,7 @@ jobs:
   scanImage:
     runs-on: ubuntu-latest
     env:
-      workdir: ./docker/httpd 
+      workdir: docker/httpd 
     steps:
       - name: scanImage
         working-directory: ${{env.workdir}}
