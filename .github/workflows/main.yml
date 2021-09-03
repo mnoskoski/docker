@@ -28,7 +28,7 @@ jobs:
     env:
       workdir: ./scripts
     steps:
-      - name: HelloWorld
+      - name: installDockerScan
         working-directory: ${{env.workdir}}
         run: bash -x install-packages.sh
 
