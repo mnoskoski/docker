@@ -20,11 +20,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: installDockerScan
-        run: curl -L https://download.docker.com/linux/ubuntu/dists/hirsute/pool/stable/amd64/docker-scan-plugin_0.7.0~ubuntu-hirsute_amd64.deb 
+        run: curl -L https://download.docker.com/linux/ubuntu/dists/hirsute/pool/stable/amd64/docker-scan-plugin_0.7.0~ubuntu-hirsute_amd64.deb -o docker-scan.deb
       - name: listDirectory
         run: ls -lah
       - name: installpackage
-        run: dpkg -i docker-scan-plugin_0.7.0~ubuntu-hirsute_amd64.deb 
+        run: dpkg -i docker-scan.deb
       - name: scanImage
         run: docker scan Dockerfile docker-scan:e2e
   build:
