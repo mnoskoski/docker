@@ -1,7 +1,7 @@
 #/usr/bin/shell
 
 echo "Istall packages"
-echo "deb https://download.docker.com/linux/ubuntu/ hirsute stable" >> /etc/apt/sources.list
+sudo echo "deb https://download.docker.com/linux/ubuntu/ hirsute stable" >> /etc/apt/sources.list
 
 cat /etc/apt/sources.list
 
