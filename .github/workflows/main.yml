@@ -8,29 +8,17 @@ on:
 
 jobs:
 
-  - checkout-vars:
-
+  build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Hello World
-      run: echo 'Hello World'
+      - uses: actions/checkout@v2
+      - name: list files on directory
+        run: ls -lah
+      - name: Build the Docker image
+        run: docker build . --file httpd/Dockerfile --tag http:$(date +%s)
 
-
-  - build:
-
+  checkoutVars:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: list files on directory
-      run: ls -lah
-    - name: Build the Docker image
-      run: docker build . --file httpd/Dockerfile --tag http:$(date +%s)
-  
-  - scan-vulnerability:
-    run-on: ubuntu-latest
-    steps:
-    - name: Scan Image Docker
-      run: docker scan --file httpd/Dockerfile docker-scan:e2e
-
+      - name: HelloWorld
+        run: echo "Hello World"
