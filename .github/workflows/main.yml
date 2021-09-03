@@ -29,6 +29,6 @@ jobs:
       workdir: httpd 
     steps:
       - name: scanImage
-        working-directory: ${{env.workdir}}
+        #working-directory: ${{env.workdir}}
         run: ls -lah
 
