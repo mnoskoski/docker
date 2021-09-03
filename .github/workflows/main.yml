@@ -25,7 +25,10 @@ jobs:
 
   scanImage:
     runs-on: ubuntu-latest
+    env:
+      workdir: ./httpd 
     steps:
       - name: scanImage
-        run: docker scan --file httpd/Dockerfile docker-scan:e2e
+        working-directory: ${{env.workdir}}
+        run: docker scan --file Dockerfile docker-scan:e2e
 
