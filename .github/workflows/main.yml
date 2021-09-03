@@ -26,7 +26,7 @@ jobs:
       - name: installpackage
         run: sudo dpkg -i docker-scan.deb
       - name: scanImage
-        run: docker scan Dockerfile
+        run: docker scan Dockerfile -y
   build:
     runs-on: ubuntu-latest
     steps:
