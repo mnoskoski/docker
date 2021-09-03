@@ -1,7 +1,9 @@
 #/usr/bin/shell
 
 echo "Istall packages"
-deb https://download.docker.com/linux/ubuntu/ hirsute stable
+echo "deb https://download.docker.com/linux/ubuntu/ hirsute stable" >> /etc/apt/sources.list
+
+cat /etc/apt/sources.list
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
