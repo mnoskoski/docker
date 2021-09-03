@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: HelloWorld
         run: echo "Hello World"
-  installPackages:
+  scanImage:
     runs-on: ubuntu-latest
     env:
       workdirScripts: ./scripts
