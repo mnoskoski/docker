@@ -7,40 +7,26 @@ on:
     branches: [ master ]
 
 jobs:
-
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: list files on directory
-        run: ls -lah
-      - name: Build the Docker image
-        run: docker build . --file httpd/Dockerfile --tag http:$(date +%s)
-
   checkoutVars:
     runs-on: ubuntu-latest
     steps:
       - name: HelloWorld
         run: echo "Hello World"
-  
   installPackages:
     runs-on: ubuntu-latest
     env:
-      workdir: ./scripts
-    steps:
-      - name: installDockerScan
-        working-directory: ${{env.workdir}}
-        run: bash -x install-packages.sh
-
-  scanImage:
-    runs-on: ubuntu-latest
-    env:
-      workdir: ./httpd 
+      workdirScripts: ./scripts
+      wordirDockerfile: ./httpd 
     steps:
       - uses: actions/checkout@v2
-      - name: listDirectory
-        working-directory: ${{env.workdir}}
-        run: ls
+      - name: installDockerScan
+        working-directory: ${{env.workdirScripts}}
+        run: bash -x install-packages.sh
       - name: scanImage
         run: docker scan Dockerfile docker-scan:e2e
-
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the Docker image
+        run: docker build . --file httpd/Dockerfile --tag http:$(date +%s)
