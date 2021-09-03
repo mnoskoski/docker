@@ -26,12 +26,12 @@ jobs:
   scanImage:
     runs-on: ubuntu-latest
     env:
-      workdir: docker/httpd 
+      workdir: ./httpd 
     steps:
       - uses: actions/checkout@v2
       - name: listDirectory
-        #working-directory: ${{env.workdir}}
+        working-directory: ${{env.workdir}}
         run: ls
-      - name: discoveryDirectory
-        run: pwd
+      - name: scanImage
+        run: docker scan Dockerfile docker-scan:e2e
 
