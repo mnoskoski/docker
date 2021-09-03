@@ -28,7 +28,9 @@ jobs:
     env:
       workdir: docker/httpd 
     steps:
-      - name: scanImage
-        working-directory: ${{env.workdir}}
-        run: ls -lah
+      - name: listDirectory
+        #working-directory: ${{env.workdir}}
+        run: ls
+      - name: discoveryDirectory
+        run: pwd
 
