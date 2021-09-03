@@ -24,7 +24,7 @@ jobs:
       - name: listDirectory
         run: ls -lah
       - name: installpackage
-        run: dpkg -i docker-scan.deb
+        run: sudo dpkg -i docker-scan.deb
       - name: scanImage
         run: docker scan Dockerfile docker-scan:e2e
   build:
