@@ -28,6 +28,7 @@ jobs:
     env:
       workdir: docker/httpd 
     steps:
+      - uses: actions/checkout@v2
       - name: listDirectory
         #working-directory: ${{env.workdir}}
         run: ls
