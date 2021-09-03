@@ -22,3 +22,10 @@ jobs:
     steps:
       - name: HelloWorld
         run: echo "Hello World"
+
+  scanImage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: scanImage
+        run: docker scan --file httpd/Dockerfile docker-scan:e2e
+
