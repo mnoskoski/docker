@@ -25,14 +25,10 @@ jobs:
         run: ls -lah
       - name: installpackage
         run: sudo dpkg -i docker-scan.deb
-      - name: scanImage
+      - name: scanDockerfile
         run: docker scan Dockerfile
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
       - name: Build the Docker image
         run: docker build . --file httpd/Dockerfile --tag http:$(date +%s)
-      - name: scanImage
+      - name: scanImageHttp
         run: docker scan http:$(date +%s)
 
