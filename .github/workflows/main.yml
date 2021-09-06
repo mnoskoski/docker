@@ -39,9 +39,9 @@ jobs:
           # Image name and optionally tag in "name:tag" format
           tag: http:$(date +%s)
           # Path to base directory to run `docker build` command (default ".")
-          path: httpd/Dockerfile
+          path: httpd/
           # Path to Dockerfile, which is relative path from "path" parameter (default "Dockerfile")
-          dockerfile: httpd/Dockerfile
+          dockerfile: Dockerfile
           # Enable scanning Dockerfile by hadolint (default "true")
           #hadolint-enable: # optional, default is true
           # Hadolint version (default "2.6.1")
