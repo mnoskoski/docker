@@ -65,7 +65,7 @@ jobs:
           # Ignore unfixed vulnerabilities (default "false")
           #trivy-ignore-unfixed: # optional, default is false
           # Enable scanning image by docker scan. If enabled, "docker-scan-snyk-token" must be also set. (default "false")
-          docker-scan-enable: false
+          docker-scan-enable: true
           # Docker scan version (default "0.8.0")
           #docker-scan-version: # optional, default is 0.8.0
           # Fail step if image has vulnerabilities with a severity above this level. Acceptable value is one of (low|medium|high). (default "low")
