@@ -26,7 +26,7 @@ jobs:
       - name: installpackage
         run: sudo dpkg -i docker-scan.deb
       - name: scanDockerfile
-        run: docker scan Dockerfile
+        run: docker scan hello-world:latest -y
       - name: Build the Docker image
         run: docker build . --file httpd/Dockerfile --tag http:$(date +%s)
       - name: scanImageHttp
