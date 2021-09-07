@@ -42,3 +42,5 @@ jobs:
       - name: test
         if: github.event.check_suite.conclusion == 'sucess'
         run: echo "Result build by color ${{ steps.random-color-generator.outputs.green }}"
+      - name: Ocorreu uma falha no trabalho
+        if: ${{ failure() }}
