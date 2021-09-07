@@ -25,12 +25,6 @@ jobs:
         run: ls -lah
       - name: installpackage
         run: sudo dpkg -i docker-scan.deb
-      #- name: scanDockerfile
-      #  run: docker scan hello-world:latest -y
-      #- name: Build the Docker image
-      #  run: docker build . --file httpd/Dockerfile --tag http:$(date +%s)
-      #- name: scanImageHttp
-      #  run: docker scan http:$(date +%s)
       - name: Build and Scan Image
         # You may pin to the exact commit or the version.
         # uses: ISID/build-and-scan-image@0c59f016680e6431d462705aac334dd39b97e277
@@ -42,35 +36,4 @@ jobs:
           path: httpd/
           # Path to Dockerfile, which is relative path from "path" parameter (default "Dockerfile")
           dockerfile: Dockerfile
-          # Enable scanning Dockerfile by hadolint (default "true")
-          #hadolint-enable: # optional, default is true
-          # Hadolint version (default "2.6.1")
-          #hadolint-version: # optional, default is 2.6.1
-          # Fail step if rules with a severity above this level are violated. Acceptable value is one of (error|warning|info|style|ignore|none). (default "info")
-          #hadolint-severity: # optional, default is info
-          # Enable scanning image by dockle (default "true")
-          #dockle-enable: # optional, default is true
-          # Dockle version (default "0.3.15")
-          #dockle-version: # optional, default is 0.3.15
-          # Fail step if checkpoints with a severity above this level are violated. Acceptable value is one of (INFO|WARN|FATAL). (default "WARN")
-          #dockle-severity: # optional, default is WARN
-          # Enable scanning image by trivy (default "true")
-          #trivy-enable: # optional, default is true
-          # Trivy version (default "0.19.2")
-          #trivy-version: # optional, default is 0.19.2
-          # Fail step if image has vulnerabilities with a severity same as this level. Acceptable value is comma-separated list of (UNKNOWN|LOW|MEDIUM|HIGH|CRITICAL). (default "UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL")
-          #trivy-severity: # optional, default is UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL
-          # Vulnerability types which trivy detect to. If you use this action for commercial usage, you MUST set this option as "os" and use trivy without non-commercial data sources. Acceptable value is comma-separated list of (os|library). (default "os")
-          #trivy-vuln-type: # optional, default is os
-          # Ignore unfixed vulnerabilities (default "false")
-          #trivy-ignore-unfixed: # optional, default is false
-          # Enable scanning image by docker scan. If enabled, "docker-scan-snyk-token" must be also set. (default "false")
           docker-scan-enable: true
-          # Docker scan version (default "0.8.0")
-          #docker-scan-version: # optional, default is 0.8.0
-          # Fail step if image has vulnerabilities with a severity above this level. Acceptable value is one of (low|medium|high). (default "low")
-          #docker-scan-severity: # optional, default is low
-          # Snyk API Token. This is necessary if "docker-scan-enable" is "true". (default "")
-          #docker-scan-snyk-token: # optional, default is 
-        
-
