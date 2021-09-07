@@ -25,6 +25,8 @@ jobs:
         run: ls -lah
       - name: installpackage
         run: sudo dpkg -i docker-scan.deb
+      - name: Get color
+        run: echo "The selected color is ${{ steps.random-color-generator.outputs.orange }}"
       - name: Build and Scan Image
         # You may pin to the exact commit or the version.
         # uses: ISID/build-and-scan-image@0c59f016680e6431d462705aac334dd39b97e277
