@@ -39,5 +39,5 @@ jobs:
           # Path to Dockerfile, which is relative path from "path" parameter (default "Dockerfile")
           dockerfile: Dockerfile
           docker-scan-enable: true
-          if: github.event.check_suite.conclusion == 'sucess'
-          run: echo "Result build by color ${{ steps.random-color-generator.outputs.green }}"
+        if: github.event.check_suite.conclusion == 'sucess'
+        run: echo "Result build by color ${{ steps.random-color-generator.outputs.green }}"
