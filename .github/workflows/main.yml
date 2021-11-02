@@ -16,7 +16,7 @@ jobs:
       - name: listDirectory
         run: ls -lah
   PreparePipeline:
-    runs-on: ${{ so-agent }}
+    runs-on: ${{ env.so-agent  }}
     steps:
       - uses: actions/checkout@v2
       - name: installDockerScan
@@ -24,7 +24,7 @@ jobs:
       - name: installpackage
         run: sudo dpkg -i docker-scan.deb
   DockerBuild:
-    runs-on: ${{ so-agent }}
+    runs-on: ${{ env.so-agent }}
     steps:
       - name: DockerBuild
         run: docker build app-nginx/ -t mnoskoski/nodesjs-simple
