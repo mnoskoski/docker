@@ -16,9 +16,11 @@ jobs:
       - name: listDirectory
         run: ls -lah
   PreparePipeline:
-    runs-on: ${{env.agentSO}}
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: showVariable
+        run: echo ${{env.agentSO}}
       - name: installDockerScan
         run: curl -L https://download.docker.com/linux/ubuntu/dists/hirsute/pool/stable/amd64/docker-scan-plugin_0.7.0~ubuntu-hirsute_amd64.deb -o docker-scan.deb      
       - name: installpackage
