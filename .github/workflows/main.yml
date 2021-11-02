@@ -28,6 +28,7 @@ jobs:
   DockerBuild:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: DockerBuild
         run: docker build app-nginx/ -t mnoskoski/nodesjs-simple
       - name: ExecuteDockerScan
