@@ -6,3 +6,16 @@
 #  - expose in port 80
 #  - configure permission
 #  - enable the start of httpd automatic
+
+
+Comandos:
+ - docker help
+ - docker build
+ - docker run -it -d 
+ - docker ps -a -q
+ - docker stop
+ - docker start
+ - docker container ps
+ - docker-compose UP/DOWN  
+ - docker service
+ 

@@ -1,5 +1,4 @@
 name: Docker Build App
-
 on:
   push:
     branches: [ master ]
@@ -12,7 +11,7 @@ jobs:
     steps:
       - name: HelloWorld
         run: echo "Hello World"
-  scanImage:
+  PreparePipeline:
     runs-on: ubuntu-latest
     env:
       workdirScripts: ./scripts
@@ -27,14 +26,3 @@ jobs:
         run: sudo dpkg -i docker-scan.deb
       - name: Get color
         run: echo "The selected color is ${{ steps.random-color-generator.outputs.orange }}"
-      - name: Build and Scan Image
-        if: ${{ sucess() }} 
-        uses: ISID/build-and-scan-image@v0.1.2
-        with:
-          # Image name and optionally tag in "name:tag" format
-          tag: http:$(date +%s)
-          # Path to base directory to run `docker build` command (default ".")
-          path: httpd/
-          # Path to Dockerfile, which is relative path from "path" parameter (default "Dockerfile")
-          dockerfile: Dockerfile
-          docker-scan-enable: true
