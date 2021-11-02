@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: HelloWorld
         run: echo "Hello World"
+      - name: listDirectory
+        run: ls -lah
   PreparePipeline:
     runs-on: ubuntu-latest
     env:
@@ -19,10 +21,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: installDockerScan
-        run: curl -L https://download.docker.com/linux/ubuntu/dists/hirsute/pool/stable/amd64/docker-scan-plugin_0.7.0~ubuntu-hirsute_amd64.deb -o docker-scan.deb
-      - name: listDirectory
-        run: ls -lah
+        run: curl -L https://download.docker.com/linux/ubuntu/dists/hirsute/pool/stable/amd64/docker-scan-plugin_0.7.0~ubuntu-hirsute_amd64.deb -o docker-scan.deb      
       - name: installpackage
         run: sudo dpkg -i docker-scan.deb
-      - name: Get color
-        run: echo "The selected color is ${{ steps.random-color-generator.outputs.orange }}"
+      - name: DockerBuild
+        run: docker build -f app-nginx/ -t mnoskoski/nodesjs-simple
