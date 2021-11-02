@@ -25,4 +25,4 @@ jobs:
       - name: installpackage
         run: sudo dpkg -i docker-scan.deb
       - name: DockerBuild
-        run: docker build -f app-nginx/ -t mnoskoski/nodesjs-simple
+        run: docker build app-nginx/ -t mnoskoski/nodesjs-simple
