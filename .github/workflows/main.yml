@@ -4,6 +4,8 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+env:
+  so-agent: ubuntu-latest
 
 jobs:
   checkoutVars:
@@ -14,18 +16,17 @@ jobs:
       - name: listDirectory
         run: ls -lah
   PreparePipeline:
-    runs-on: ubuntu-latest
-    env:
-      workdirScripts: ./scripts
-      wordirDockerfile: ./httpd 
+    runs-on: ${{ so-agent }}
     steps:
       - uses: actions/checkout@v2
       - name: installDockerScan
         run: curl -L https://download.docker.com/linux/ubuntu/dists/hirsute/pool/stable/amd64/docker-scan-plugin_0.7.0~ubuntu-hirsute_amd64.deb -o docker-scan.deb      
       - name: installpackage
         run: sudo dpkg -i docker-scan.deb
+  DockerBuild:
+    runs-on: ${{ so-agent }}
+    steps:
       - name: DockerBuild
         run: docker build app-nginx/ -t mnoskoski/nodesjs-simple
-
       - name: ExecuteDockerScan
         run: docker scan app-nginx/Dockerfile
