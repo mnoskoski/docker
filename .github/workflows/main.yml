@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker Build App
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
       - name: Get color
         run: echo "The selected color is ${{ steps.random-color-generator.outputs.orange }}"
       - name: Build and Scan Image
-        if: ${{ failure() }} 
+        if: ${{ sucess() }} 
         uses: ISID/build-and-scan-image@v0.1.2
         with:
           # Image name and optionally tag in "name:tag" format
