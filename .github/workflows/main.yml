@@ -26,7 +26,7 @@ jobs:
       - name: installpackage
         run: sudo dpkg -i docker-scan.deb
   DockerBuild:
-    runs-on: ${{env.agentSO}}
+    runs-on: ubuntu-latest
     steps:
       - name: DockerBuild
         run: docker build app-nginx/ -t mnoskoski/nodesjs-simple
