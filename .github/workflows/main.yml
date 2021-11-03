@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: HelloWorld
-        run: echo "$(date)"
+        run: echo $date
       - name: listDirectory
         run: ls -lah
   DockerScanDockerfile:
