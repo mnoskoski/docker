@@ -6,13 +6,14 @@ on:
     branches: [ master ]
 env:
   agentSO: ubuntu-latest
+  node_verion: 14
 
 jobs:
-  checkoutVars:
+  executeScripts:
     runs-on: ubuntu-latest
     steps:
       - name: HelloWorld
-        run: echo "Hello World"
+        run: echo "$(date)"
       - name: listDirectory
         run: ls -lah
   DockerScanDockerfile:
