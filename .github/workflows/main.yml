@@ -2,6 +2,8 @@ name: Docker Build App
 on:
   push:
     branches: [ master ]
+    paths:
+      - app-nginx/**
   pull_request:
     branches: [ master ]
 env:
