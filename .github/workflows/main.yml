@@ -3,11 +3,11 @@ on:
   push:
     branches:
       - master
-    paths:
-      - app-nginx/**
-  pull_request:
-    paths:
-      - app-nginx/**
+  #   paths:
+  #     - app-nginx/**
+  # pull_request:
+  #   paths:
+  #     - app-nginx/**
 env:
   agentSO: ubuntu-latest
   node_verion: 14
@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: dev
-    needs: build
+    needs: DockerBuild
     steps:
       - name: deployingDev
         run: echo "deploy sucesso"
@@ -58,7 +58,7 @@ jobs:
       - name: deployingDev
         run: echo "deploy sucesso"
 
-  deploy-prod:
+  deploy-prd:
     runs-on: ubuntu-latest
     environment:
       name: prod
