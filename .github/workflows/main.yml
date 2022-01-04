@@ -6,19 +6,20 @@ on:
     paths:
       - app-nginx/**
   pull_request:
-    branches: [ master ]
+    paths:
+      - app-nginx/**
 env:
   agentSO: ubuntu-latest
   node_verion: 14
-
 jobs:
   executeScripts:
     runs-on: ubuntu-latest
     steps:
-      - name: HelloWorld
-        run: echo $(date)
+      - name: HelloWorldWithDate
+        run: echo "Hello World $(date)"
       - name: listDirectory
         run: ls -lah
+
   DockerScanDockerfile:
     runs-on: ubuntu-latest
     steps:
@@ -29,10 +30,41 @@ jobs:
         run: sudo dpkg -i docker-scan.deb
       - name: ExecuteDockerScan
         run: docker scan app-nginx/Dockerfile
+
   DockerBuild:
     runs-on: ubuntu-latest
+    needs: DockerScanDockerfile
     steps:
       - uses: actions/checkout@v2
       - name: DockerBuild
         run: docker build app-nginx/ -t mnoskoski/nodesjs-simple
+
+
+  deploy-dev:
+    runs-on: ubuntu-latest
+    environment:
+      name: dev
+    needs: build
+    steps:
+      - name: deployingDev
+        run: echo "deploy sucesso"
+
+  deploy-hmg:
+    runs-on: ubuntu-latest
+    environment:
+      name: hmg
+    needs: deploy-dev
+    steps:
+      - name: deployingDev
+        run: echo "deploy sucesso"
+
+  deploy-prod:
+    runs-on: ubuntu-latest
+    environment:
+      name: prod
+    needs: deploy-hmg
+    steps:
+      - name: deployingDev
+        run: echo "deploy sucesso"
+
       
