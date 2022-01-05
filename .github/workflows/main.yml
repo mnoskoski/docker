@@ -10,8 +10,7 @@ on:
   #     - app-nginx/**
 env:
   agentSO: ubuntu-latest
-  node_verion: '14'
-
+  NODE-VERSION: '14'
 jobs:
   executeScripts:
     runs-on: ubuntu-latest
@@ -45,7 +44,7 @@ jobs:
     needs: DockerScanDockerfile
     strategy:
       matrix:
-        node-version: ${{ env.node_verion }}
+        node-version: ${{ env.NODE-VERSION }}
     steps:
       - uses: actions/checkout@v2
       - name: DockerBuild - Node version ${{ matrix.node-version }}
