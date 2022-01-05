@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: dev
-      url: 'mnoskoski-dev.com.br'
+      url: 'http://mnoskoski.com'
     needs: DockerBuild
     steps:
       - name: deployingDev
