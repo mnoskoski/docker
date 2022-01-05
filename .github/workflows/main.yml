@@ -26,7 +26,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           name: 'odanieldcs/serverless-boilerplate'
-          ref: refs/heads/main
+          ref: main
 
   DockerScanDockerfile:
     runs-on: ubuntu-latest
@@ -49,8 +49,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: DockerBuild - Node version ${{ matrix.node-version }}
         run: docker build app-nginx/ -t mnoskoski/nodesjs-simple
-      - name: DockerTest
-        run: docker-compose up -d --build 
+      #- name: DockerTest
+      #  run: docker-compose up -d --build 
 
   DockerTestApp:
     runs-on: ubuntu-latest
