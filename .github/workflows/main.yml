@@ -44,6 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: dev
+      url: mnoskoski-dev.com.br
     needs: DockerBuild
     steps:
       - name: deployingDev
@@ -53,18 +54,20 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: hmg
+      url: mnoskoski-hmg.com.br
     needs: deploy-dev
     steps:
-      - name: deployingDev
+      - name: deployingHmg
         run: echo "deploy sucesso"
 
-  deploy-prd:
+  deploy-prod:
     runs-on: ubuntu-latest
     environment:
       name: prod
+      url: mnoskoski-prod.com.br
     needs: deploy-hmg
     steps:
-      - name: deployingDev
+      - name: deployingProd
         run: echo "deploy sucesso"
 
       
