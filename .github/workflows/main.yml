@@ -65,7 +65,7 @@ jobs:
     environment:
       name: dev
       url: 'http://mnoskoski.com'
-    needs: DockerBuild
+    needs: DockerBuildAndTest
     steps:
       - name: deployingDev
         run: echo "deploy sucesso"
