@@ -23,10 +23,11 @@ jobs:
   checkoutRepo:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout boilerplate
+        uses: actions/checkout@v2
         with:
-          name: 'odanieldcs/serverless-boilerplate'
-          ref: main
+          repository: 'odanieldcs/serverless-boilerplate'
+          path: serverless-boilerplate
 
   DockerScanDockerfile:
     runs-on: ubuntu-latest
