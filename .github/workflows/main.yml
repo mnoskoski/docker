@@ -45,7 +45,7 @@ jobs:
     needs: DockerScanDockerfile
     strategy:
       matrix:
-        node-version: ${{ node_verion }}
+        node-version: ${{ env.node_verion }}
     steps:
       - uses: actions/checkout@v2
       - name: DockerBuild - Node version ${{ matrix.node-version }}
