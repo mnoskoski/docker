@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: dev
-      url: mnoskoski-dev.com.br
+      url: 'mnoskoski-dev.com.br'
     needs: DockerBuild
     steps:
       - name: deployingDev
@@ -54,7 +54,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: hmg
-      url: mnoskoski-hmg.com.br
+      url: 'mnoskoski-hmg.com.br'
     needs: deploy-dev
     steps:
       - name: deployingHmg
@@ -64,7 +64,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: prod
-      url: mnoskoski-prod.com.br
+      url: 'mnoskoski-prod.com.br'
     needs: deploy-hmg
     steps:
       - name: deployingProd
