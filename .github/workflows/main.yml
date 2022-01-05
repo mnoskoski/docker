@@ -10,7 +10,8 @@ on:
   #     - app-nginx/**
 env:
   agentSO: ubuntu-latest
-  node_verion: 14
+  node_verion: '14'
+
 jobs:
   executeScripts:
     runs-on: ubuntu-latest
@@ -19,6 +20,14 @@ jobs:
         run: echo "Hello World $(date)"
       - name: listDirectory
         run: ls -lah
+
+  checkoutRepo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          name: 'odanieldcs/serverless-boilerplate'
+          ref: refs/heads/main
 
   DockerScanDockerfile:
     runs-on: ubuntu-latest
@@ -34,11 +43,15 @@ jobs:
   DockerBuildAndTest:
     runs-on: ubuntu-latest
     needs: DockerScanDockerfile
+    strategy:
+      matrix:
+        node-version: ${{ node_verion }}
     steps:
       - uses: actions/checkout@v2
-      - name: DockerBuild
+      - name: DockerBuild - Node version ${{ matrix.node-version }}
         run: docker build app-nginx/ -t mnoskoski/nodesjs-simple
       - name: DockerTest
+        run: docker-compose up -d --build 
 
   DockerTestApp:
     runs-on: ubuntu-latest
