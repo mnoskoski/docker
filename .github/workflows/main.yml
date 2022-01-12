@@ -40,7 +40,7 @@ jobs:
       - name: ExecuteDockerScan
         run: docker scan app-nginx/Dockerfile
 
-  DockerBuild:
+  DockerBuildAndTest:
     runs-on: ubuntu-latest
     needs: DockerScanDockerfile
     strategy:
@@ -49,18 +49,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: showVar
-        run: echo $(node-version)
+        run: echo ${{ matrix.node-version }}
       - name: DockerBuild - Node version ${{ matrix.node-version }}
         run: docker build app-nginx/ -t mnoskoski/nodesjs-simple
-      
-  DockerTestApp:
-    runs-on: ubuntu-latest
-    needs: DockerBuild
-    steps:
-      - uses: actions/checkout@v2
-      - name: DockerTestAccess
+      - name: DockerRun
         run: docker run -it -d -p 8080:80 mnoskoski/nodesjs-simple
-      - name: curlOnApp
+      - name: TestAccessApp
         run: curl http://localhost:8080
 
   deploy-dev:
@@ -68,7 +62,7 @@ jobs:
     environment:
       name: dev
       url: 'http://mnoskoski.com'
-    needs: DockerBuild
+    needs: DockerBuildAndTest
     steps:
       - name: DeployDev
         run: echo "deploy sucesso"
