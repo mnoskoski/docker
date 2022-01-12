@@ -71,7 +71,7 @@ jobs:
     needs: DockerBuild
     steps:
       - name: DeployDev
-        run: echo "Deploy Success
+        run: echo "deploy sucesso"
       
   deploy-hmg:
     runs-on: ubuntu-latest
