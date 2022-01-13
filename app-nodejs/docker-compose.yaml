@@ -1,5 +1,4 @@
 version: "3.7"
-
 services:
   db:
     image: mongo
@@ -15,7 +14,6 @@ services:
     ports:
       - 5672:5672
       - 15672:15672
-
   app-node:
     image: app-node
     build:
@@ -28,6 +26,5 @@ services:
       NODE_ENV: DOCKER
       NODE_INSTANCE: ''
     ports:
-      - 4000:5000
-      - 9229:9229
-    command: sh -c "./wait-for db:27017 -- ./wait-for rabbitmq:5672 -- npm run dev-debug"
+      - 4000:4000
+    command: sh -c "npm run start"
