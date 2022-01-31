@@ -39,6 +39,8 @@ jobs:
         run: sudo dpkg -i docker-scan.deb
       - name: ExecuteDockerScan
         run: docker scan app-nginx/Dockerfile
+      - name: testNpmAuditPackageJson
+        run: ls -lah
 
   DockerBuildAndTest:
     runs-on: ubuntu-latest
@@ -60,6 +62,9 @@ jobs:
         run: docker-compose -f app-nodejs/docker-compose.yaml up -d --build
       - name: testingExecution
         run: docker ps -a
+      #- name: 'npm run'
+      #  run: |
+      #    npm run coverage
 
   deploy-dev:
     runs-on: ubuntu-latest
