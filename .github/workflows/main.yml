@@ -56,6 +56,10 @@ jobs:
         run: docker run -it -d -p 8080:80 mnoskoski/nodesjs-simple
       - name: TestAccessApp
         run: curl -v http://localhost:8080
+      - name: DockerComposeUp
+        run: docker-compose -f app-nodejs/docker-compose.yaml up -d --build
+      - name: testingExecution
+        run: docker ps -a
 
   deploy-dev:
     runs-on: ubuntu-latest

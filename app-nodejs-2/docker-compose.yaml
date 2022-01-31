@@ -9,11 +9,6 @@ services:
     ports:
       - 27017:27017
 
-  rabbitmq:
-    image: rabbitmq:3.6.6-management
-    ports:
-      - 5672:5672
-      - 15672:15672
   app-node:
     image: app-node
     build:
@@ -21,7 +16,6 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - db
-      - rabbitmq
     environment:
       NODE_ENV: DOCKER
       NODE_INSTANCE: ''
