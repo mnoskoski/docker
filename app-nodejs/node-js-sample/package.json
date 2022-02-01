@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "npm run test:all",
-    "audit:fix": "npm audit fix --registry=https://registry.npmjs.org/"
+    "audit:fix": "npm audit fix --registry=https://registry.npmjs.org/",
+    "audit": "npm audit --registry=https://registry.npmjs.org/ --production"
   },
   "dependencies": {
     "express": "^4.13.3"

@@ -40,7 +40,7 @@ jobs:
       - name: ExecuteDockerScan
         run: docker scan app-nginx/Dockerfile
       - name: testNpmAuditPackageJson
-        run: ls -lah
+        run: npm run audit:fix
 
   DockerBuildAndTest:
     runs-on: ubuntu-latest
