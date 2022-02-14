@@ -37,6 +37,8 @@ jobs:
         run: curl -L https://download.docker.com/linux/ubuntu/dists/hirsute/pool/stable/amd64/docker-scan-plugin_0.7.0~ubuntu-hirsute_amd64.deb -o docker-scan.deb      
       - name: installpackage
         run: sudo dpkg -i docker-scan.deb
+      - name: testDirectory
+        run: echo $(GITHUB_ACTION_PATH)
       - name: ExecuteDockerScan
         run: docker scan app-nginx/Dockerfile
       - name: testNpmAuditPackageJson
