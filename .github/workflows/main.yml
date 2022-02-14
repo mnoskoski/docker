@@ -38,7 +38,7 @@ jobs:
       - name: installpackage
         run: sudo dpkg -i docker-scan.deb
       - name: testDirectory
-        run: echo $GITHUB_ACTION_PATH 
+        run: echo ${{ env.GITHUB_ACTION_PATH }}
       - name: ExecuteDockerScan
         run: docker scan app-nginx/Dockerfile
       - name: testNpmAuditPackageJson
