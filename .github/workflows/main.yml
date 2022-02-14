@@ -40,7 +40,7 @@ jobs:
       - name: ExecuteDockerScan
         run: docker scan app-nginx/Dockerfile
       - name: testNpmAuditPackageJson
-        run: npm run audit:fix
+        run: npm --prefix $(pwd)/docker/app-nodejs/node-js-sample/package.json run audit:fix
 
   DockerBuildAndTest:
     runs-on: ubuntu-latest
