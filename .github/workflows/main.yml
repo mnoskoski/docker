@@ -39,10 +39,8 @@ jobs:
         run: sudo dpkg -i docker-scan.deb
       - name: ExecuteDockerScan
         run: docker scan app-nginx/Dockerfile
-      - name: catPackageJson
-        run: cat $(pwd)/app-nodejs/node-js-sample/package.json
       - name: testNpmAuditPackageJson
-        run: npm --prefix $(pwd)/app-nodejs/node-js-sample/package.json run audit:fix
+        run: npm --prefix $(pwd)/app-nodejs/node-js-sample run audit:fix
 
   DockerBuildAndTest:
     runs-on: ubuntu-latest
