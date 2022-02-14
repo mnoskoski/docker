@@ -38,11 +38,13 @@ jobs:
       - name: installpackage
         run: sudo dpkg -i docker-scan.deb
       - name: testDirectory
-        run: echo ${{ env.GITHUB_ACTION_PATH }}
+        run: echo ${{ github.run_id }}
       - name: ExecuteDockerScan
         run: docker scan app-nginx/Dockerfile
       - name: testNpmAuditPackageJson
         run: npm --prefix $(pwd)/app-nodejs/node-js-sample run audit:fix
+      - name: testingSucess
+        if: ${{ job.status == 'failure' }}
 
   DockerBuildAndTest:
     runs-on: ubuntu-latest
