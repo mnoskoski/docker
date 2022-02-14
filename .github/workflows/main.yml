@@ -38,7 +38,7 @@ jobs:
       - name: installpackage
         run: sudo dpkg -i docker-scan.deb
       - name: testDirectory
-        run: echo ${{ github.run_id }}
+        run: echo ${{ GITHUB_RUN_ID }}
       - name: ExecuteDockerScan
         run: docker scan app-nginx/Dockerfile
       - name: testNpmAuditPackageJson
@@ -99,5 +99,3 @@ jobs:
     steps:
       - name: deployingProd
         run: echo "deploy sucesso"
-
-      
