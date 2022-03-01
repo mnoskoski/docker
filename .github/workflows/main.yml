@@ -51,9 +51,9 @@ jobs:
         run: docker-compose -f app-nodejs/docker-compose.yaml up -d --build
       - name: testingExecution
         run: docker ps -a
-      - name: 'npm run'
-        run: |
-          npm run coverage
+      #- name: 'npm run'
+      #  run: |
+      #    npm --prefix $(pwd)/app-nodejs/node-js-sample run coverage
 
   deploy-dev:
     runs-on: ubuntu-latest
