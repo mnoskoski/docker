@@ -3,11 +3,7 @@ on:
   push:
     branches:
       - master
-  #   paths:
-  #     - app-nginx/**
-  # pull_request:
-  #   paths:
-  #     - app-nginx/**
+
 env:
   agentSO: ubuntu-latest
   NODE-VERSION: '14'
@@ -47,7 +43,9 @@ jobs:
         run: docker build app-nginx/ -t mnoskoski/nodesjs-simple
       - name: DockerRun
         run: docker run -it -d -p 8080:80 mnoskoski/nodesjs-simple
-      - name: TestAccessApp
+      - name: TestRunApp
+        run: docker ps -a 
+      - name: TestAcessApp
         run: curl -v http://localhost:8080
       - name: DockerComposeUp
         run: docker-compose -f app-nodejs/docker-compose.yaml up -d --build
