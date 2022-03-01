@@ -37,6 +37,14 @@ jobs:
         node-version: [$NODE-VERSION]
     steps:
       - uses: actions/checkout@v2
+      - name: 'Checkout orchestration templates'
+        uses: actions/checkout@v2
+        with:
+          repository: heroku/node-js-sample
+          ref: master
+          path: s/node-js-sample        
+      - name: showDirectory
+        run: ls -lah
       - name: showVar
         run: echo ${{ matrix.node-version }}
       - name: DockerBuild - Node version ${{ matrix.node-version }}
