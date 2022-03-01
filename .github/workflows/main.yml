@@ -20,15 +20,6 @@ jobs:
       - name: listDirectory
         run: ls -lah
 
-  checkoutRepo:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout boilerplate
-        uses: actions/checkout@v2
-        with:
-          repository: 'odanieldcs/serverless-boilerplate'
-          path: serverless-boilerplate
-
   DockerScanDockerfile:
     runs-on: ubuntu-latest
     steps:
@@ -37,8 +28,6 @@ jobs:
         run: curl -L https://download.docker.com/linux/ubuntu/dists/hirsute/pool/stable/amd64/docker-scan-plugin_0.7.0~ubuntu-hirsute_amd64.deb -o docker-scan.deb      
       - name: installpackage
         run: sudo dpkg -i docker-scan.deb
-      - name: testDirectory
-        run: echo ${{ GITHUB_RUN_ID }}
       - name: ExecuteDockerScan
         run: docker scan app-nginx/Dockerfile
       - name: testNpmAuditPackageJson
@@ -64,9 +53,9 @@ jobs:
         run: docker-compose -f app-nodejs/docker-compose.yaml up -d --build
       - name: testingExecution
         run: docker ps -a
-      #- name: 'npm run'
-      #  run: |
-      #    npm run coverage
+      - name: 'npm run'
+        run: |
+          npm run coverage
 
   deploy-dev:
     runs-on: ubuntu-latest
