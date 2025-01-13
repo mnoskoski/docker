@@ -20,7 +20,7 @@ sudo apt-get -y install \
 sudo apt-get -y install docker-ce
 
 # Install docker-compose
-COMPOSE_VERSION=1.12.0
+COMPOSE_VERSION=2.32.2
 sudo sh -c "curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
 sudo chmod +x /usr/local/bin/docker-compose
 sudo sh -c "curl -L https://raw.githubusercontent.com/docker/compose/${COMPOSE_VERSION}/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
